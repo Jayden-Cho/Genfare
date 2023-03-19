@@ -1,0 +1,21 @@
+# these should be the bare minimum class structure we need for the tool
+
+class Devices:
+  String name
+  Functions[] functions
+  
+  pass
+
+class Functions:
+  String name
+  Bits[] bits
+  
+  pass
+
+class Bits:
+  String name
+  String descriptions
+  String set_text
+  String clear_text
+  
+  pass
