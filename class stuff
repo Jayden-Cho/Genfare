@@ -13,6 +13,8 @@ class Functions:
   pass
 
 class Bits:
+  int bit
+  int optionflag
   String name
   String descriptions
   String set_text
