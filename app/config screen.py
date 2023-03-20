@@ -38,20 +38,25 @@ class FilteredListbox(tk.Frame):
             # Otherwise, filter the list
             self.middle_lb.delete(0, "end")
             for i in selected_items:
+                # actual filter, the filter will have to be a little different since we want different name 
                 filter_text = self.left_lb.get(i)
                 filtered_items = [item for item in self.data if filter_text in item]
                 self.middle_lb.insert("end", *filtered_items)
     
-    def set_data(self, data):
+    def set_data(self, left_data, middle_data):
         # Set the data for the listboxes
-        self.data = data
+        self.left_data = left_data
+        self.middle_data = middle_data
         self.left_lb.delete(0, "end")
-        self.left_lb.insert("end", *sorted(set([item.split()[0] for item in data])))
+        self.left_lb.insert("end", *sorted(set([item.split()[0] for item in left_data])))
+        self.data = middle_data
+        self.middle_lb.delete(0, "end")
+        self.middle_lb.insert("end", *middle_data)
 
 if __name__ == "__main__":
     root = tk.Tk()
-    root.geometry("600x400")
-    root.title("Filtered Listbox")
+    root.geometry("800x600")
+    root.title("Genfare Configuration Assistant")
     
     # Create the main frame
     main_frame = tk.Frame(root)
@@ -62,9 +67,10 @@ if __name__ == "__main__":
     filtered_lb.pack(side="top", fill="both", expand=True)
     
     # Set the data for the listboxes
-    data = ["apple red", "banana yellow", "cherry red", "date brown", "elderberry purple", "fig green",
-            "grape red", "kiwi green", "lemon yellow", "melon green", "orange orange", "pear green",
-            "pineapple yellow", "plum purple", "raspberry red", "strawberry red", "watermelon green"]
-    filtered_lb.set_data(data)
+    left_data = ["red", "yellow", "green", "orange", "purple"]
+    middle_data = ["apple red", "banana yellow", "cherry red", "date brown", "elderberry purple", "fig green",
+                   "grape red", "kiwi green", "lemon yellow", "melon green", "orange orange", "pear green",
+                   "pineapple yellow", "plum purple", "raspberry red", "strawberry red", "watermelon green"]
+    filtered_lb.set_data(left_data, middle_data)
     
     root.mainloop()
