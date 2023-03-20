@@ -1,4 +1,6 @@
 import tkinter as tk
+from PIL import ImageTk
+
 
 class FilteredListbox(tk.Frame):
     def __init__(self, master=None, *args, **kwargs):
@@ -55,6 +57,13 @@ class FilteredListbox(tk.Frame):
 
 if __name__ == "__main__":
     root = tk.Tk()
+    width, height = 800, 600
+    width_screen, height_screen = root.winfo_screenwidth(), root.winfo_screenheight()
+    x, y = (width_screen/2) - (width/2), (height_screen/2) - (height/2)
+    root.geometry('%dx%d+%d+%d' % (width, height, x, y))
+    root.title("Farebox Configuration Assistant")
+    root.iconphoto(False, ImageTk.PhotoImage(file='spx.png'))
+
     root.geometry("800x600")
     root.title("Genfare Configuration Assistant")
     
