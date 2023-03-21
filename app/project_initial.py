@@ -78,9 +78,4 @@ help_menu.add_command(label="About",)
 help_menu.add_separator()
 app.config(menu=menubar)
 
-
-
-
-
-
 app.mainloop()  
